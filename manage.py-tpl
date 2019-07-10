@@ -3,9 +3,16 @@
 import os
 import sys
 
-
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', '{{ project_name }}.settings')
+
+    if 'DYNO' in os.environ:
+        # Is being run on Heroku, use production as default settings
+        default_settings_file = '{{ project_name }}.config.production'
+    else:
+        # Not being run on Heroku, use local as default settings
+        default_settings_file = '{{ project_name }}.config.local'
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', default_settings_file)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

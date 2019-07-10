@@ -1,0 +1,18 @@
+{% block title %}
+    My Site - Home
+{% endblock title %}
+
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">My Site</h1>
+  <p class="lead">This is a simple Jumbotron component from Bootstrap 4.</p>
+  <hr class="my-4">
+  <p>Edit this to include your content.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'core_about' %}'" role="button">Learn more</a>
+  </p>
+</div>
+{% endblock content %}
+
+

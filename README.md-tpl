@@ -1,9 +1,6 @@
-<!-- {% if not project_name %} -->
-
 ![Kickstart Coding Logo](./logo.png)
 
 # Kickstart Coding: Django Project Starter
-
 
 This is an example start project for [Kickstart Coding](http://kickstartcoding.com/)
 Django projects.
@@ -80,13 +77,11 @@ setup:
 
 ## Tour of files
 
-
-
-    Diretory structure description below:
+Directory structure description below:
 
 ```python
 [name_of_project]/
-    - config/        
+    - config/
         - base.py          # Stores most settings
         - local.py         # Stores settings only for local dev
         - production.py    # Stores settings only used by production (e.g. Heroku)
@@ -94,7 +89,7 @@ setup:
     - static/              # Static files
 - apps/                    # A directory to store all our custom apps
     - accounts/            # An example custom app that includes sign-up and log-in
-        - models.py        # Customized 
+        - models.py        # Customized user class goes here
         - urls.py          # URLs for sign-up and log-in pages
         - views.p          # Views for sign-up and log-in pages
     - homepage/            # An example custom app that has some static pages
@@ -111,9 +106,3 @@ setup:
 
 
 
-
-<!-- {% endif %} -->
-
-# {{ project_name }} - Django project
-
-A Django project built using [Kickstart Coding's Django Project Starter](http://kickstartcoding.com/)

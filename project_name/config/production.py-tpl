@@ -1,0 +1,9 @@
+# Settings that are unique to production go here
+from .base import *  # noqa
+
+# GENERAL
+# ------------------------------------------------------------------------------
+# https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+SECRET_KEY = sys.env['DJANGO_SECRET_KEY']
+
+
