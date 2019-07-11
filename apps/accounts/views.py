@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from apps.accounts.forms import UserEditForm
-from apps.accounts.users import User
+from apps.accounts.models import User
 
 def log_in(request):
     if request.method == 'POST':
