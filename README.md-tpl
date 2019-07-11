@@ -23,8 +23,8 @@ launch to Heroku or similar web-hosting service.
 * Pipenv: It's set-up to use Pipfile
 
 * Nice stuff:
-    * `django-debug-toolbar` is installed and ready to go!
     * Separate `local` and `production` settings
+    * `django-debug-toolbar` is installed and ready to go!
 
 
 ## Who is this for
@@ -97,12 +97,78 @@ Directory structure description below:
 ```
 
 
-
 ## Launching to Heroku
 
 * Prereq: [You have Heroku and Postgres installed and set-up.
   ](https://github.com/kickstartcoding/postgres-getting-started)
 
+### Provisioning on Heroku
 
 
+1. Local installation (only need to do once)
+    * Ubuntu Linux: `sudo apt-get install postgresql-client`
+    * macOS: `brew install postgres`
+
+2. Creating a new Heroku Postgres Database (only need to do this once per
+Heroku):
+```bash
+heroku create # Create a Heroku app (only run this if you haven't already)
+heroku addons:create heroku-postgresql:hobby-dev
+```
+
+3. Confirm that the database is working by connecting to it with the
+command-line client:
+```bash
+heroku pg:psql
+```
+
+
+### Configuring Django to use Postgres
+
+* Follow this guide:
+  [`devcenter.heroku.com/articles/django-app-configuration`](https://devcenter.heroku.com/articles/django-app-configuration)
+
+* Once Heroku & Django is properly configured for Django, you'll need to run
+  the migrations on the remote Postgres database. That can be done as follows:
+```bash
+heroku run python manage.py migrate
+```
+
+----------------------
+
+## Going further
+
+### Mailgun-powered email
+
+Add env variables to Heroku as such:
+    * MAILGUN_API_KEY
+    * MAILGUN_DOMAIN
+
+Then, add the following to your production.py:
+
+    # Anymail (Mailgun)
+    # ------------------------------------------------------------------------------
+    # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
+    INSTALLED_APPS += ['anymail']  # noqa F405
+    EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+    # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
+    ANYMAIL = {
+        'MAILGUN_API_KEY': env('MAILGUN_API_KEY'),
+        'MAILGUN_SENDER_DOMAIN': env('MAILGUN_DOMAIN')
+    }
+
+
+
+### AWS S3
+
+
+AWS S3 is great for handling uploaded files. Typically, this is exactly what
+you need: AWS supports as many and as large of files that your users might want
+to upload.
+
+- Use AWS:
+    - Setup AWS and get your keys (follow this guide:
+        https://devcenter.heroku.com/articles/s3#s3-setup)
+    - Configure your keys using heroku config:add for each of the
+        AWS settings specified by config/settings/production.py
 

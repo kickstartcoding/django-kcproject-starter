@@ -4,6 +4,13 @@ from .base import *  # noqa
 # GENERAL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
+if 'DJANGO_SECRET_KEY' not in sys.env:
+    print('ERROR: Must set DJANGO_SECRET_KEY')
+    print('ERROR: If you are using Heroku, it should be done like:')
+    print('ERROR: heroku config:set DJANGO_SECRET_KEY=aoih4unfdklafnd')
+    print('ERROR: (just type a lot of random keys for the last part)')
 SECRET_KEY = sys.env['DJANGO_SECRET_KEY']
 
-
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())

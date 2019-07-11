@@ -1,3 +1,5 @@
+{% extends "base.html" %}
+
 {% block title %}
     My Site - Home
 {% endblock title %}
@@ -13,6 +15,9 @@
     <a class="btn btn-primary btn-lg" href="{% url 'core_about' %}'" role="button">Learn more</a>
   </p>
 </div>
+
+<p>More stuff. {{ example_context_variable }}.</p>
+
 {% endblock content %}
 
 
