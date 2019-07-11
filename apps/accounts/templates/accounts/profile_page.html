@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    @{{ user.username }}
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <img src="{{ user.gravatar }}" />
+
+        <h3>@{{ user.username }}</h3>
+        <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
+        <p>{{ user.bio }}</p>
+
+        {% if is_viewing_self %}
+            <a href="{% url "edit_profile" %}">Edit</a>
+        {% endif %}
+    </div>
+
+    <div class="col-md-9">
+        stuff could go here...
+    </div>
+</div>
+{% endblock %}
+

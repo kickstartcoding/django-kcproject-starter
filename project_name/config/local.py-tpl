@@ -1,6 +1,8 @@
 # Settings that are unique to local dev go here
 from .base import *
 
+DEBUG = True
+
 # Database
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
 

@@ -6,6 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from apps.accounts.forms import UserEditForm
+from apps.accounts.users import User
 
 def log_in(request):
     if request.method == 'POST':
@@ -47,6 +48,28 @@ def logout_view(request):
     return redirect('home')
 
 
+def view_all_users(request):
+    all_users = User.objects.all()
+    context = {
+        'users': all_users,
+    }
+    return render(request, 'accounts/view_all_users.html', context)
+
+
+def view_profile(request, username):
+    user = User.objects.get(username=username)
+
+    if request.user == user:
+        is_viewing_self = True
+    else:
+        is_viewing_self = False
+
+    context = {
+        'user': user,
+        'is_viewing_self': is_viewing_self,
+    }
+    return render(request, 'accounts/edit_profile.html', context)
+
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -61,4 +84,5 @@ def edit_profile(request):
         'form': form,
     }
     return render(request, 'accounts/edit_profile.html', context)
+
 
