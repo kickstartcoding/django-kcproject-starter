@@ -52,7 +52,7 @@
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'view_all_users' %}">View All Users</a>
+                    <a class="nav-link" href="{% url 'view_all_users' %}">Users</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -62,7 +62,8 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'view_profile' request.user %}" >
-                            {{ request.user }}<img src="{{ user.gravatar }}" style="height: 50px" />
+                            {{ request.user }}
+                            <img src="{{ user.gravatar }}" class="navbar-avatar" />
                         </a>
                     </li>
                 {% else %}
