@@ -1,4 +1,4 @@
-![Kickstart Coding Logo](./apps/core/static/images/kickstart_coding_logo.png)
+[Kickstart Coding Logo](./apps/core/static/images/kickstart_coding_logo.png)
 
 # Kickstart Coding: Django Project Starter
 
@@ -123,11 +123,11 @@ Directory structure description below:
         - models.py        # Customized user class is here
         - urls.py          # URLs for sign-up and log-in pages
         - views.py         # Views for sign-up and log-in pages
-        - forms.py         # Form for editing user profile
-        - templates/       # Base template
+        - forms.py         # Form for editing user profile, sign-up
+        - templates/       # Templates for user profile stuff
     - core/                # An example custom app that has some static pages
         - static/          # Static files
-        - templates/       # Static files
+        - templates/       # Core templates, including base templates
         - etc
 - manage.py                # Entry point
 - Pipfile                  # Development requirements
