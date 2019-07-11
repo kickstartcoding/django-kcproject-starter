@@ -1,7 +1,11 @@
 from django.shortcuts import render
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+
+from apps.accounts.forms import UserEditForm
 
 def log_in(request):
     if request.method == 'POST':
@@ -18,25 +22,43 @@ def log_in(request):
     return render(request, 'accounts/login.html', context)
 
 
-
 def sign_up(request):
     if request.method == 'POST':
-        form = UserCreationForm(request=request, data=request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
 
-            # Uncomment this if you want sign-ups to be able to log-in right
-            # away:
-            #username = form.cleaned_data.get('username')
-            #raw_password = form.cleaned_data.get('password1')
-            #user = authenticate(username=username, password=raw_password)
-            #login(request, user)
-            return redirect('log_in')
+            # Log-in the user right away
+            messages.success(request, 'Account created successfully. Welcome!')
+            login(request, user)
+            return redirect('home')
     else:
-        form = UserCreationForm(request=request)
+        form = UserCreationForm()
 
     context = {
         'form': form,
     }
     return render(request, 'accounts/signup.html', context)
-#
+
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Logged out.')
+    return redirect('home')
+
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UserEditForm(instance=request.user)
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/edit_profile.html', context)
+

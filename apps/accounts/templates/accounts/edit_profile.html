@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <h1 class="text-center">{{ request.user }}</h1>
+        <h3>Edit information</h3>
+        <form class="form-signin" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button class="btn btn-lg btn-succesa btn-block text-uppercase">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

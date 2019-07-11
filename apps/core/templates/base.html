@@ -51,10 +51,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
-
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'django.contrib.auth.views.logout' %}?next=/" >Sign Out</a>
+                        <a class="nav-link" href="{% url 'logout' %}" >Sign Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'edit_profile' %}" >{{ request.user }}</a>
                     </li>
                 {% else %}
                     <li class="nav-item">
@@ -65,6 +69,7 @@
                     </li>
                 {% endif %}
             </ul>
+
         </div>
     </nav>
 </div>
@@ -74,7 +79,7 @@
 {% block main %}
     <div class="container pt-2">
 
-      {# Add in "messages" such as due to failed log-ins, etc #}
+      {# Enable Django's "messages" system #}
       {% if messages %}
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>

@@ -4,13 +4,12 @@ import os
 import sys
 
 def main():
-
-    if 'DYNO' in os.environ:
-        # Is being run on Heroku, use production as default settings
-        default_settings_file = '{{ project_name }}.config.production'
-    else:
-        # Not being run on Heroku, use local as default settings
-        default_settings_file = '{{ project_name }}.config.local'
+    #if 'DYNO' in os.environ:
+    #    # Is being run on Heroku, use production as default settings
+    #    default_settings_file = '{{ project_name }}.config.production'
+    #else:
+    # Not being run on Heroku, use local as default settings
+    default_settings_file = '{{ project_name }}.config.local'
 
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', default_settings_file)
     try:

@@ -7,11 +7,11 @@ def home(request):
         'example_context_variable': 'Change me.',
     }
 
-    return render(request, 'page/home.html', context)
+    return render(request, 'pages/home.html', context)
 
 def about(request):
     context = {
     }
 
-    return render(request, 'page/about.html', context)
+    return render(request, 'pages/about.html', context)
 

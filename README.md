@@ -1,4 +1,4 @@
-![Kickstart Coding Logo](./logo.png)
+![Kickstart Coding Logo](./apps/core/static/images/kickstart_coding_logo.png)
 
 # Kickstart Coding: Django Project Starter
 
@@ -11,20 +11,23 @@ launch to Heroku or similar web-hosting service.
 
 ## Features
 
-* Bootstrap 4: It's all set-up with Bootstrap 4 templates, and a few example
-  pages.
+* Bootstrap 4: It's all set-up with Bootstrap 4 templates, a few example pages,
+  and `django-bootstrap4` for easily bootstrap-based forms
 
-* Log-in / sign-up: It includes a log-in and sign-up system ready-to-go.
+* Accounts: It includes a log-in, sign-up, and profile editing page ready-to-go.
 
-* Custom user class: It features a custom user class that you can
+* Custom user class: It features a custom user class
 
 * Heroku support: It's one `git push` away from publishing to the world
 
 * Pipenv: It's set-up to use Pipfile
 
-* Nice stuff:
+* Easy development:
     * Separate `local` and `production` settings
-    * `django-debug-toolbar` is installed and ready to go!
+    * While for bigger projects production / dev parity is vitally important,
+      this is great for getting started with smaller projects
+    * Use Sqlite locally and postgres in production
+    * `django-debug-toolbar` -- great debugging tool
 
 
 ## Who is this for
@@ -65,7 +68,7 @@ setup:
 
     cd mycoolproject
     pipenv shell
-    pipenv install
+    pipenv install --dev
 
 3. Migrate to create the SQLite database:
 
@@ -122,14 +125,15 @@ command-line client:
 heroku pg:psql
 ```
 
+4. Push to Heroku
+```bash
+git push heroku master
+```
 
-### Configuring Django to use Postgres
 
-* Follow this guide:
-  [`devcenter.heroku.com/articles/django-app-configuration`](https://devcenter.heroku.com/articles/django-app-configuration)
-
-* Once Heroku & Django is properly configured for Django, you'll need to run
-  the migrations on the remote Postgres database. That can be done as follows:
+5. Once Heroku & Django is properly configured for Django and you've pushed it,
+you'll need to run the migrations on the remote Postgres database. That can be
+done as follows:
 ```bash
 heroku run python manage.py migrate
 ```
