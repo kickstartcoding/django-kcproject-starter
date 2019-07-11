@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from apps.accounts.forms import UserEditForm
+from apps.accounts.forms import UserEditForm, SignupForm
 from apps.accounts.models import User
 
 def log_in(request):
@@ -25,7 +25,7 @@ def log_in(request):
 
 def sign_up(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
 
@@ -34,7 +34,7 @@ def sign_up(request):
             login(request, user)
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = SignupForm()
 
     context = {
         'form': form,
@@ -68,7 +68,7 @@ def view_profile(request, username):
         'user': user,
         'is_viewing_self': is_viewing_self,
     }
-    return render(request, 'accounts/edit_profile.html', context)
+    return render(request, 'accounts/profile_page.html', context)
 
 @login_required
 def edit_profile(request):

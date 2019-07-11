@@ -4,5 +4,7 @@
     background: linear-gradient(135deg, #f2f9fe 0%, #d6f0fd 100%);
 }
 
-
+.card-user {
+    max-width: 80px;
+}
 

@@ -10,11 +10,9 @@
         <h1>Users</h1>
         {% for user in users %}
             <a href="{% url "view_profile" user.username %}">
-                <div class="card card-signin my-5">
+                <div class="card card-signin card-user my-5">
                     <img src="{{ user.gravatar }}" />
                     <h5 class="card-title text-center">@{{ user.username }}</h5>
-                    <p><strong>{{ user.first_name }} {{ user.last_name }}</strong></p>
-                    <p>{{ user.bio }}</p>
                 </div>
             </a>
         {% endfor %}

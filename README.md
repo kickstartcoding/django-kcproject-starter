@@ -33,11 +33,13 @@ launch to Heroku or similar web-hosting service.
 
 * Easy development:
     * Separate `local` and `production` settings
+    * Use Sqlite locally and postgres in production
     * While for bigger projects production / dev parity is vitally important,
       this is great for getting started with smaller projects
-    * Use Sqlite locally and postgres in production
-    * `django-debug-toolbar` -- great debugging tool
 
+* Misc nice stuff:
+    * `django-debug-toolbar` -- great debugging tool
+    * Error pages
 
 ### Who is this for
 
@@ -84,13 +86,21 @@ cd mycoolproject
 pipenv shell
 pipenv install --dev
 ```
+*Note:* It's probably okay if you get errors while installing `pscycopg2` or
+`gunicorn`. These are not needed for development, and are likely to install
+fine when they are needed, e.g. on Heroku.
 
-3. Migrate to create the SQLite database:
+3. This starter project *does not* include migrations. Generate migrations as such:
+```
+python manage.py makemigrations accounts
+```
+
+4. Migrate to create the SQLite database:
 ```
 python manage.py migrate
 ```
 
-4. Get the server running:
+5. Get the server running:
 ```
 python manage.py runserver
 ```
