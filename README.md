@@ -86,6 +86,7 @@ cd mycoolproject
 pipenv shell
 pipenv install --dev
 ```
+
 *Note:* It's probably okay if you get errors while installing `pscycopg2` or
 `gunicorn`. These are not needed for development, and are likely to install
 fine when they are needed, e.g. on Heroku.
