@@ -87,16 +87,16 @@ pipenv shell
 pipenv install --dev
 ```
 
-*Note:* It's probably okay if you get errors while installing `pscycopg2` or
+*Note:* It's probably okay if you get errors while installing `psycopg2` or
 `gunicorn`. These are not needed for development, and are likely to install
 fine when they are needed, e.g. on Heroku.
 
-3. This starter project *does not* include migrations. Generate migrations as such:
+3. This starter project *does not* include migrations. Make migrations as such:
 ```
 python manage.py makemigrations accounts
 ```
 
-4. Migrate to create the SQLite database:
+4. Run the migrations to actually create the SQLite database:
 ```
 python manage.py migrate
 ```
@@ -109,9 +109,9 @@ python manage.py runserver
 ### Setting up with GitHub repo
 
 1. Create a new repo on GitHub, and *BE SURE TO NOT* check "initialize with
-README.md" or `.gitignore` or anything. You want to make a *truly blank repo* for
-these steps to work without a hiccup.  Just fill in the name and description,
-and nothing else.
+README.md" or `.gitignore` or anything. You want to make a *truly blank repo*
+for these steps to work without a hiccup.  Just fill in the name and
+description, and nothing else.
 
 2. Now, initialize and push the code we have by running this in the
 command-line:
