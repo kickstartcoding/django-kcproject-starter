@@ -106,6 +106,33 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+### Setting up with GitHub repo
+
+1. Create a new repo on GitHub, and *BE SURE TO NOT* check "initialize with
+README.md" or `.gitignore` or anything. You want to make a *truly blank repo* for
+these steps to work without a hiccup.  Just fill in the name and description,
+and nothing else.
+
+2. Now, initialize and push the code we have by running this in the
+command-line:
+
+```bash
+ls # Ensure you are "next to" the manage.py, etc
+git init # Initalize this
+git add -A # Add all your files
+git commit -m "first" # Make a commit
+```
+
+3. Finally, link up your local repository with the git one, and push.  Follow
+the instructions provided on the github.com page. They will look a little like
+this, except instead of `janeqhacker/mycoolproject` it will be whatever your
+username is and your repo name is:
+
+```bash
+git remote add origin git@github.com:janeqhacker/mycoolproject.git
+git push -u origin master
+```
+
 ### File structure
 
 Directory structure description below:
@@ -146,8 +173,8 @@ heroku create # Create a Heroku app (only run this if you haven't already)
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-2. Confirm that the database is working by connecting to it with the
-command-line client:
+2. *Optional:* Confirm that the database is working by connecting to it with the
+command-line client (`Ctrl+D` to exit):
 ```bash
 heroku pg:psql
 ```
@@ -164,7 +191,15 @@ follows:
 heroku run python manage.py migrate
 ```
 
-6. Your site should be ready to go!
+6. Your site should work! View it in your browser.
+
+7. You'll also want to add a `SECRET_KEY` to Heroku to make your site secure:
+```bash
+heroku config:set SECRET_KEY=randomly hit keys
+```
+
+NOTE: Where it says "randomly hit keys", do just that!  Just type a really long
+random series of letters and numbers. You'll never have to remember it again.
 
 ----------------------
 
