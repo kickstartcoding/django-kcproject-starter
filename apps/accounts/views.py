@@ -12,6 +12,8 @@ def log_in(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
+            # User has specified valid credentials, have user log-in, and then
+            # redirect back home
             login(request, form.get_user())
             return redirect('home')
     else:
@@ -29,7 +31,7 @@ def sign_up(request):
         if form.is_valid():
             user = form.save()
 
-            # Log-in the user right away
+            # Log-in the user right away, then redirect home
             messages.success(request, 'Account created successfully. Welcome!')
             login(request, user)
             return redirect('home')
@@ -70,6 +72,7 @@ def view_profile(request, username):
     }
     return render(request, 'accounts/profile_page.html', context)
 
+
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -84,5 +87,4 @@ def edit_profile(request):
         'form': form,
     }
     return render(request, 'accounts/edit_profile.html', context)
-
 
