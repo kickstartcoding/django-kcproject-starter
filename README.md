@@ -205,35 +205,45 @@ random series of letters and numbers. You'll never have to remember it again.
 
 ## Going further
 
-### Mailgun-powered email
 
-Add env variables to Heroku as such:
-    * MAILGUN_API_KEY
-    * MAILGUN_DOMAIN
+### Mailgun
 
-Then, add the following to your production.py:
+1. Add env variables to Heroku as such:
 
-    # Anymail (Mailgun)
-    # ------------------------------------------------------------------------------
-    # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
-    INSTALLED_APPS += ['anymail']  # noqa F405
-    EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
-    # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
-    ANYMAIL = {
-        'MAILGUN_API_KEY': env('MAILGUN_API_KEY'),
-        'MAILGUN_SENDER_DOMAIN': env('MAILGUN_DOMAIN')
-    }
+```
+heroku config:set MAILGUN_API_KEY=(YOUR API KEY AS SPECIFIED BY MAILGUN)
+heroku config:set MAILGUN_DOMAIN=(YOUR DOMAIN AS SPECFIEID BY MAILGUN)
+```
+
+2. Install anymail
+
+```
+pipenv install django-anymail
+```
+
+3. Then, add the following to your `production.py`:
+
+
+        # Anymail (Mailgun)
+        # ------------------------------------------------------------------------------
+        # https://anymail.readthedocs.io/en/stable/installation/#installing-anymail
+        INSTALLED_APPS += ['anymail']
+        EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
+        # https://anymail.readthedocs.io/en/stable/installation/#anymail-settings-reference
+        ANYMAIL = {
+            'MAILGUN_API_KEY': os.environ.get('MAILGUN_API_KEY'),
+            'MAILGUN_SENDER_DOMAIN': os.environ.get('MAILGUN_DOMAIN')
+        }
+
 
 
 ### AWS S3
 
-AWS S3 is great for handling uploaded files. Typically, this is exactly what
-you need: AWS supports as many and as large of files that your users might want
-to upload.
+If you want to be able to upload files and not have them be wiped out each time
+you launch, you'll need to set up Amazon S3 or an equivalent competing Object
+Store (such as Digital Ocean's Object Store).
 
-- Use AWS:
-    - Setup AWS and get your keys (follow this guide:
-        https://devcenter.heroku.com/articles/s3#s3-setup)
-    - Configure your keys using heroku config:add for each of the
-        AWS settings specified by config/settings/production.py
+Setup AWS and get your keys by following this guide:
+
+<https://devcenter.heroku.com/articles/s3>
 
