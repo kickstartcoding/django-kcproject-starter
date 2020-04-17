@@ -13,7 +13,9 @@ launch to Heroku or similar web-hosting service.
 
 ### Features
 
-* Bootstrap 4: It's all set-up with Bootstrap 4 templates, a few example pages,
+* Clean & simple: Minimal changes from the official `django-admin startproject`
+
+* Bootstrap 4: It's all set-up with Bootstrap 4.4.1 CSS, a few example pages,
   and `django-bootstrap4` for easily bootstrap-based forms
 
 * Accounts:
