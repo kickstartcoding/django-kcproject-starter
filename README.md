@@ -58,9 +58,9 @@ If you are new to Postgres, read our [Postgres Getting Started guide
   either **macOS** or a **GNU/Linux** distribution such as Ubuntu. That said,
   it might work.
 
-> This was original created for Kickstart Coding, the affordable,
-> inclusive, and intensive coding course teaching cutting-edge Python /
-> Django and JavaScript / React web development in Oakland, CA.
+> This was original created for Kickstart Coding, the affordable, inclusive,
+> and intensive coding course teaching cutting-edge Python / Django and
+> JavaScript / React web development HQ'ed in Oakland, CA.
 > [Learn more and enroll here.](http://kickstartcoding.com/?utm_source=github&utm_campaign=cheatsheets)
 
 
@@ -87,9 +87,10 @@ pipenv shell
 pipenv install --dev
 ```
 
-*Note:* It's probably okay if you get errors while installing `psycopg2` or
-`gunicorn`. These are not needed for development, and are likely to install
-fine when they are needed, e.g. on Heroku.
+**Note:** It's probably okay if you get errors while installing `psycopg2`
+and/or `gunicorn`, such as `'ERROR: Command errored out with exit status 1:
+python setup.py egg_info Check the logs for full command output.'`.  These
+packages are not needed for development.
 
 3. This starter project *does not* include migrations. Make migrations as such:
 ```
