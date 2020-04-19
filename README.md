@@ -221,10 +221,10 @@ If you get an error like this while trying to do the initial `startproject`:
 
 1. Go to https://github.com/kickstartcoding/django-kcproject-starter
 
-2. Click the button `[Clone or download v]`, then click "Download Zip"
+2. Click the button `[Clone or download v]`, then click `[Download Zip]`
 
-3. Save the django-kcproject-starter-master.zip file somewhere, such as
-in your ~/Downloads directory, or in the directory you are working
+3. Save the `django-kcproject-starter-master.zip` file somewhere, such as in
+your `~/Downloads` directory, or in the directory you are working
 
 4. Now, run the same command, except referencing the downloaded copy. Example
 commands below:
