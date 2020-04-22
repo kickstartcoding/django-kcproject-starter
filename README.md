@@ -274,6 +274,19 @@ solution might be more involved, and we'd recommend searching for Mac-specific
 answers about Python3 `psycopg2` failing to compile.
 
 
+### Issue: `collectstatic` while deploying to Heroku fails
+
+If you get an error like this:
+
+        remote:            conn.setdefault('ATOMIC_REQUESTS', False)
+        remote:        AttributeError: 'NoneType' object has no attribute 'setdefault'
+
+
+That likely means your Postgres database isn't created, and that you possibly
+skipped that step:
+
+        heroku addons:create heroku-postgresql:hobby-dev
+
 ----------------------
 
 
