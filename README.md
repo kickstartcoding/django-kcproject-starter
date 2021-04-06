@@ -13,7 +13,7 @@ launch to Heroku or similar web-hosting service.
 
 ### Features
 
-* Clean & simple: Minimal changes from the official `django-admin startproject`
+* Clean, simple, and up-to-date: Only a few changes from the officia `django-admin startproject`
 
 * Bootstrap 4: It's all set-up with Bootstrap 4.4.1 CSS, a few example pages,
   and `django-bootstrap4` for easily bootstrap-based forms
@@ -87,13 +87,14 @@ setup:
 ```
 cd mycoolproject
 pipenv shell
-pipenv install --dev
+pipenv install --skip-lock --dev
 ```
 
 **Note:** It's probably okay if you get errors while installing `psycopg2`
 and/or `gunicorn`, such as `'ERROR: Command errored out with exit status 1:
 python setup.py egg_info Check the logs for full command output.'`.  These
-packages are not needed for development.
+packages are not needed for development. That's why we have `--skip-lock` 
+specified to prevent these errors from stopping the installation.
 
 3. This starter project *does not* include migrations. Make migrations as such:
 ```
