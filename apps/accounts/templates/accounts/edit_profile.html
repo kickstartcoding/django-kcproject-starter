@@ -12,10 +12,10 @@
         <h3>Edit information</h3>
         <p><strong>Note:</strong> Your avatar is based on your email. Change
         your avatar at <a href="https://en.gravatar.com/">Gravatar.com</a></p>
-        <form class="form-signin" method="POST">
+        <form class="d-grid form-signin" method="POST">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <button class="btn btn-lg btn-succesa btn-block text-uppercase">Save</button>
+            <button class="btn btn-lg btn-success text-uppercase">Save</button>
         </form>
     </div>
 </div>

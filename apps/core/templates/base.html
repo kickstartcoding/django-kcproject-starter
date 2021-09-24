@@ -37,14 +37,22 @@
             My Site
         </a>
 
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+            class="navbar-toggler navbar-toggler-right"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
             <span class="navbar-toggler-icon">
                 ☰
             </span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'home' %}">Start</a>
                 </li>
@@ -55,7 +63,7 @@
                     <a class="nav-link" href="{% url 'view_all_users' %}">Users</a>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}" >Sign Out</a>
@@ -100,8 +108,7 @@
 {% endblock main %}
 
 
-      <script src="{% static 'js/bootstrap/jquery-3.4.1.min.js' %}"></script>
-      <script src="{% static 'js/bootstrap/bootstrap.js' %}"></script>
+      <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
   </body>
 </html>
 

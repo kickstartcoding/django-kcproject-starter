@@ -5,10 +5,10 @@
         <div class="card card-signin my-5">
             <div class="card-body">
                 <h5 class="card-title text-center">{{ form_title }}</h5>
-                <form class="form-signin" method="POST">
+                <form class="d-grid form-signin" method="POST">
                     {% csrf_token %}
                     {% bootstrap_form form %}
-                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">{{ form_title }}</button>
+                    <button class="btn btn-lg btn-primary text-uppercase" type="submit">{{ form_title }}</button>
                 </form>
             </div>
         </div>
