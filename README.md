@@ -15,8 +15,8 @@ launch to Heroku or similar web-hosting service.
 
 * Clean, simple, and up-to-date: Only a few changes from the officia `django-admin startproject`
 
-* Bootstrap 4: It's all set-up with Bootstrap 4.4.1 CSS, a few example pages,
-  and `django-bootstrap4` for easily bootstrap-based forms
+* Bootstrap 5: It's all set-up with Bootstrap 5.0.2 CSS, a few example pages,
+  and `django-bootstrap5` for easily bootstrap-based forms
 
 * Accounts:
     * Log-in and sign-up pages
