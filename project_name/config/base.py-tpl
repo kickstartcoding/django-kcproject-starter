@@ -31,7 +31,7 @@ LOCAL_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'bootstrap4',
+    'django_bootstrap5',
 ]
 
 DJANGO_APPS = [
